@@ -1,7 +1,11 @@
+import TopArtistSection from "@/components/organisms/TopArtistSection";
+import TopSongsSection from "@/components/organisms/TopSongsSection";
+
 export default function Home() {
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <main className="flex flex-col gap-10">
+            <TopArtistSection />
+            <TopSongsSection />
+        </main>
     )
 }
