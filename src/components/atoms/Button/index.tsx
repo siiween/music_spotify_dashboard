@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonProps {
     children: React.ReactNode;
-    variant?: "primary" | "secondary" | "outline";
+    variant?: "primary" | "secondary" | "outline" | "transparent";
     size?: "sm" | "md" | "lg";
     onClick?: () => void;
     disabled?: boolean;
@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
         primary: "bg-rose-600 text-white hover:bg-rose-700",
         secondary: "bg-orange-600 text-white hover:bg-orange-700",
         outline: "border border-gray-400 text-gray-700 hover:bg-gray-100",
+        transparent: "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-700",
     };
 
     const sizeClasses = {

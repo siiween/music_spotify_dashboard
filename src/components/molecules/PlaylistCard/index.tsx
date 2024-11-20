@@ -3,18 +3,18 @@ import Text from "@/components/atoms/Text";
 import Link from "next/link";
 import { millisToMinutesAndSeconds } from "@/utils/tracks";
 
-interface TrackCardProps {
+interface PlaylistCardProps {
   imageUrl: string;
   title: string;
-  artist: string;
-  duration: number;
   href: string;
+  description: string;
+  tracks: number;
 }
 
-const TrackCard: React.FC<TrackCardProps> = ({ imageUrl, title, artist, duration, href }) => {
+const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,description, tracks}) => {
   return (
-    <Link href={href} className="w-full p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg">
-        <div className="relative w-full h-52 rounded-lg overflow-hidden">
+    <Link href={href} className="w-full md:p-5 p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg">
+        <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={imageUrl}
             alt={title}
@@ -25,14 +25,31 @@ const TrackCard: React.FC<TrackCardProps> = ({ imageUrl, title, artist, duration
         <div className="w-full mt-2">
           <Text
             as="h3"
-            size="xl"
+            size="lg"
             variant="primary"
             className="font-semibold text-left"
           >
             {title}
           </Text>
+          <Text
+            as="p"
+            size="sm"
+            variant="muted"
+            className="font-semibold text-left truncate"
+          >
+            {description}
+          </Text>
+          <Text
+            as="p"
+            size="xs"
+            variant="secondary"
+            className="text-right mt-2"
+          >
+            {tracks} Tracks
+          </Text>
+          
 
-          <div className="flex">
+          {/* <div className="flex">
           <Text
             as="p"
             size="md"
@@ -51,11 +68,11 @@ const TrackCard: React.FC<TrackCardProps> = ({ imageUrl, title, artist, duration
 
             {millisToMinutesAndSeconds(duration)}
           </Text>
-          </div>
+          </div> */}
           
         </div>
     </Link>
   );
 };
 
-export default TrackCard;
+export default PlaylistCard;
