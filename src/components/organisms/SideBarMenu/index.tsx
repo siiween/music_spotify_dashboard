@@ -52,7 +52,7 @@ const SideBarMenu: React.FC = () => {
         </Text>
       </div>
 
-      <Button variant="transparent" size="sm" className="absolute top-1/2 -transform-y-1/2 right-1 hidden md:block" onClick={() => toggleCollapse()}>
+      <Button variant="transparent" size="xs" className="absolute top-1/2 -transform-y-1/2 right-1 hidden md:block" onClick={() => toggleCollapse()}>
         {isCollapsed ?
           <ArrowRightIcon className="w-4 h-4 dark:text-white text-neutral-900" /> :
           <ArrowLeftIcon className="w-4 h-4 dark:text-white text-neutral-900" />

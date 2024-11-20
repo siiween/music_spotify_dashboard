@@ -13,7 +13,7 @@ interface PlaylistCardProps {
 
 const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,description, tracks}) => {
   return (
-    <Link href={href} className="w-full md:p-5 p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg">
+    <Link href={href} className="w-full  p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg">
         <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={imageUrl}

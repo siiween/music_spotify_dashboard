@@ -28,7 +28,6 @@ export async function fetchPlaylists(params: PlaylistsParams) {
         });
         return response.data;
     } catch (error: any) {
-        console.log(error);
         console.error("Error fetching playlists:", error.response?.data || error.message);
         throw new Error(
             error.response?.data?.error?.message || "Failed to fetch playlists."
@@ -42,24 +41,23 @@ export async function fetchPlaylists(params: PlaylistsParams) {
 type ArtistsListParams = {
     limit?: number;
     offset?: number;
+    ids: string;
 };
 
 export async function fetchArtistsList(params: ArtistsListParams) {
-  
+
     const session = await getServerSession(authOptions);
     const accessToken = session?.user?.accessToken;
     if (!accessToken) {
         throw new Error("Unauthorized: Unable to fetch Spotify access token.");
     }
     try {
-        const response = await spotifyAxios.get("/me/following", {
+        const response = await spotifyAxios.get("/artists", {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
             params: {
-                limit: params.limit || 100,
-                offset: params.offset || 0,
-                type: "artist",
+                ids: params.ids,
             },
         });
         return response.data;
@@ -67,6 +65,79 @@ export async function fetchArtistsList(params: ArtistsListParams) {
         console.error("Error fetching artist:", error.response?.data || error.message);
         throw new Error(
             error.response?.data?.error?.message || "Failed to fetch artists."
+        );
+    }
+}
+
+
+
+
+export async function fetchArtist(id: string) {
+    const session = await getServerSession(authOptions);
+    const accessToken = session?.user?.accessToken;
+    if (!accessToken) {
+        throw new Error("Unauthorized: Unable to fetch Spotify access token.");
+    }
+    try {
+        const response = await spotifyAxios.get(`/artists/${id}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        return response.data;
+    } catch (error: any) {
+        console.error("Error fetching artist: " + id, error.response?.data || error.message);
+        throw new Error(
+            error.response?.data?.error?.message || "Failed to fetch artist: " + id
+        );
+    }
+}
+
+export async function fetchArtistAlbums(id: string) {
+    const session = await getServerSession(authOptions);
+    const accessToken = session?.user?.accessToken;
+    if (!accessToken) {
+        throw new Error("Unauthorized: Unable to fetch Spotify access token.");
+    }
+    try {
+        const response = await spotifyAxios.get(`/artists/${id}/albums`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            params: {
+                limit:15,
+            },
+        });
+        return response.data;
+    } catch (error: any) {
+        console.error("Error fetching artist albums: " + id, error.response?.data || error.message);
+        throw new Error(
+            error.response?.data?.error?.message || "Failed to fetch artist albums: " + id
+        );
+    }
+}
+
+
+export async function fetchArtistTopTracks(id: string) {
+    const session = await getServerSession(authOptions);
+    const accessToken = session?.user?.accessToken;
+    if (!accessToken) {
+        throw new Error("Unauthorized: Unable to fetch Spotify access token.");
+    }
+    try {
+        const response = await spotifyAxios.get(`/artists/${id}/top-tracks`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            params: {
+                limit:15,
+            },
+        });
+        return response.data;
+    } catch (error: any) {
+        console.error("Error fetching artist top-tracks: " + id, error.response?.data || error.message);
+        throw new Error(
+            error.response?.data?.error?.message || "Failed to fetch artist top-tracks: " + id
         );
     }
 }

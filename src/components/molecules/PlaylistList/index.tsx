@@ -20,7 +20,6 @@ export default function PlaylistList({ initialPlaylists, limit }: PlaylistListPr
     const data = await fetchPlaylists({ offset, limit });
     setPlaylists((prev) => [...prev, ...data?.playlists?.items]);
     setOffset((prev) => prev + limit);
-
     if (data?.playlists?.items < limit) {
       setHasMore(false);
     }

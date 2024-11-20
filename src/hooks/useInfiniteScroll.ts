@@ -9,7 +9,6 @@ interface UseInfiniteScrollProps {
 export default function useInfiniteScroll({ fetchMore, hasMore, threshold = 300 }: UseInfiniteScrollProps) {
   const [isFetching, setIsFetching] = useState(false);
   const observer = useRef<IntersectionObserver | null>(null);
-
   const lastElementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
