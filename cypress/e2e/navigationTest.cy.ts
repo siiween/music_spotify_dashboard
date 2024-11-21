@@ -16,15 +16,7 @@ describe("Full Navigation Test", () => {
       "exist"
     );
 
-    // Step 3: Toggle Dark Mode
-    cy.log("Toggling Dark Mode");
-    cy.get('button[title="Dark mode"]').as("darkModeButton");
-    cy.get("@darkModeButton").click();
-
-    // Step 4: Verify class changes for Dark Mode toggle
-    cy.get("@darkModeButton")
-      .should("not.have.class", "hover:bg-neutral-300")
-      .and("have.class", "bg-black");
+   
 
     // Step 5: Toggle back to Light Mode
     cy.log("Toggling back to Light Mode");
@@ -35,6 +27,16 @@ describe("Full Navigation Test", () => {
     cy.get("@lightModeButton")
       .should("not.have.class", "hover:bg-black")
       .and("have.class", "bg-neutral-200");
+
+       // Step 3: Toggle Dark Mode
+    cy.log("Toggling Dark Mode");
+    cy.get('button[title="Dark mode"]').as("darkModeButton");
+    cy.get("@darkModeButton").click();
+
+    // Step 4: Verify class changes for Dark Mode toggle
+    cy.get("@darkModeButton")
+      .should("not.have.class", "hover:bg-neutral-300")
+      .and("have.class", "bg-black");
 
     // Step 7: Verify the "Click on me!" button shows an alert
     cy.log("Testing 'Click on me!' button alert");
