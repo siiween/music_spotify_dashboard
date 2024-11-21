@@ -1,7 +1,7 @@
 "use client";
-import LinkWithIcon from "@/components/molecules/LinkWithIcon";
+import LinkWithIcon from "@/components/atoms/LinkWithIcon";
 import Text from "@/components/atoms/Text";
-import { HomeIcon, HeartIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
+import { HomeIcon, HandThumbUpIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
 import { usePathname } from "next/navigation";
 import { MusicalNoteIcon } from "@heroicons/react/16/solid";
@@ -36,8 +36,8 @@ const SideBarMenu: React.FC = () => {
           </LinkWithIcon>
         </li>
         <li>
-          <LinkWithIcon href="/favorites" icon={HeartIcon} active={pathname.startsWith("/Favorites")} collapsed={isCollapsed}>
-            Favorites
+          <LinkWithIcon href="/recommendations" icon={HandThumbUpIcon} active={pathname.startsWith("/recommendations")} collapsed={isCollapsed}>
+            Recommendations
           </LinkWithIcon>
         </li>
         <li className="md:ml-0 ml-3">

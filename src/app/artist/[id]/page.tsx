@@ -6,11 +6,11 @@ import MinutesTopTracks from "@/components/organisms/DurationTopTracks";
 
 export default async function ArtistPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const artistData = await fetchArtist(id); // Llamada al servidor una vez
+  const artistData = await fetchArtist(id);
 
   return (
     <div className="flex md:flex-row flex-col gap-6 h-full">
-      <SideBarArtist data={artistData} /> {/* Pasamos los datos como props */}
+      <SideBarArtist data={artistData} />
       <div className="flex-1  md:overflow-y-scroll gap-6 flex flex-col">
         <Suspense fallback={<div>Loading...</div>}>
             <NumberOfTracksByAlbum artistId={id} />

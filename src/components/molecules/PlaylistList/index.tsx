@@ -6,6 +6,8 @@ import { fetchPlaylists } from "@/actions/spotifyActions";
 import PlaylistCard from "../PlaylistCard";
 import Text from "@/components/atoms/Text";
 
+
+
 interface PlaylistListProps {
   initialPlaylists: any[];
   limit: number;
@@ -24,7 +26,7 @@ export default function PlaylistList({ initialPlaylists, limit }: PlaylistListPr
       setHasMore(false);
     }
   };
-
+ 
   const { lastElementRef, isFetching } = useInfiniteScroll({
     fetchMore: fetchMorePlaylists,
     hasMore,
@@ -35,12 +37,13 @@ export default function PlaylistList({ initialPlaylists, limit }: PlaylistListPr
       <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-2 md:gap-3">
         {playlists?.map((list: any, index) => (
           <PlaylistCard
-            key={list.id || index}
+            key={list.id + index}
             imageUrl={list?.images[0]?.url}
             title={list?.name}
             href="/home"
             description={list?.description}
             tracks={list?.tracks?.total}
+            owner={list?.owner?.display_name}
           />
         ))}
         

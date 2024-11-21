@@ -4,25 +4,25 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
     Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { useTheme } from "next-themes";
 import { useMemo } from "react";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-interface BarChartProps {
-    horizontal?: boolean;
+interface LineChartProps {
     label: string;
     data: number[];
     labels: string[];
 }
 
-export default function BarChart({horizontal = false, label, data, labels } : BarChartProps) {
+export default function LineChart({ label, data, labels }: LineChartProps) {
     const { theme } = useTheme();
 
     const dataSet = {
@@ -31,16 +31,15 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
             {
                 label,
                 data,
-                backgroundColor: "rgb(190 24 93)",
                 borderColor: "rgb(190 24 93)",
-                borderWidth: 1,
+                backgroundColor: "rgba(190, 24, 93, 0.2)",
+                tension: 0.4,
             },
         ],
-    }
+    };
 
     const options = useMemo(
         () => ({
-            indexAxis: horizontal ? "x" as const : "y" as const,
             responsive: true,
             plugins: {
                 legend: {
@@ -69,12 +68,12 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
                 },
             },
         }),
-        [horizontal, theme]
+        [theme]
     );
 
     return (
         <div className="w-full">
-            <Bar data={dataSet} options={options} />
+            <Line data={dataSet} options={options} />
         </div>
     );
 }

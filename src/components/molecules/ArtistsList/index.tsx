@@ -39,8 +39,8 @@ export default function ArtistList({ initialArtists, limit }: ArtistListProps) {
   return (
     <div className="flex flex-col gap-5">
       <div className="grid md:grid-cols-3 lg:grid-cols-6 grid-cols-2">
-        {artists.map((artist: any) =>
-          <ArtistCard key={artist?.id} imageUrl={artist?.images[0]?.url} name={artist?.name} href={`/artist/${artist?.id}`} />
+        {artists.map((artist: any, index) =>
+          <ArtistCard key={artist?.id + index } imageUrl={artist?.images[0]?.url} name={artist?.name} href={`/artist/${artist?.id}`} />
         )}
       </div>
       <div className="w-full flex flex-col items-center">

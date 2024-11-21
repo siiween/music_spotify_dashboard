@@ -1,6 +1,6 @@
 "use client"
 import Button from "@/components/atoms/Button";
-import LinkWithIcon from "@/components/molecules/LinkWithIcon";
+import LinkWithIcon from "@/components/atoms/LinkWithIcon";
 import Text from "@/components/atoms/Text";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
 import ArtistCard from "@/components/molecules/ArtistCard";
@@ -42,24 +42,24 @@ export default function Playground() {
 
 
       {/* Artist card */}
-      <Text variant="secondary" className="mt-5">
+      {/* <Text variant="secondary" className="mt-5">
         Artist card
       </Text>
       <div className="grid grid-cols-4">
         <ArtistCard imageUrl="https://i.scdn.co/image/ab67616d0000b273ed133ea8f343f0f451346a44" title="Jhayco" href="/home" />
         <ArtistCard imageUrl="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8460d200209e7bf0788a9649df" title="Mora" href="/home" />
-      </div>
+      </div> */}
 
       {/* track card */}
 
-      <Text variant="secondary" className="mt-5">
+      {/* <Text variant="secondary" className="mt-5">
         Track card
       </Text>
 
       <div className="grid grid-cols-4">
         <TrackCard imageUrl="https://i.scdn.co/image/ab67616d0000b273552837b3e37071cbf3c9dc53" title="No me conoce - Remix" href="/home" artist={"Jhayco"} duration={213242} />
         <TrackCard imageUrl="https://images.genius.com/0faa16aeea6a56d1c24dafdc152038fc.1000x1000x1.jpg" title="Primer dia de clases" href="/home" artist={"Mora"} duration={253244} />
-      </div>
+      </div> */}
 
 
     </div>

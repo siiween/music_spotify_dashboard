@@ -1,23 +1,24 @@
 import Image from "next/image";
 import Text from "@/components/atoms/Text";
 import Link from "next/link";
+import moment from "moment";
 
 interface PlaylistCardProps {
   imageUrl: string;
-  title: string;
+  name: string;
   href: string;
-  description: string;
+  releaseDate: string;
   tracks: number;
-  owner: string;
+  artist: string;
 }
 
-const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,description, tracks, owner}) => {
+const AlbumCard: React.FC<PlaylistCardProps> = ({ imageUrl, name, href ,releaseDate, tracks, artist}) => {
   return (
     <Link href={href} className="w-full  p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg">
         <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={imageUrl}
-            alt={title}
+            alt={name}
             fill
              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
@@ -30,7 +31,7 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,desc
             variant="primary"
             className="font-semibold text-left"
           >
-            {title}
+            {name}
           </Text>
           <Text
             as="p"
@@ -38,7 +39,7 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,desc
             variant="muted"
             className="font-semibold text-left truncate"
           >
-            {description}
+            {artist}
           </Text>
           <div className="flex justify-between">
           <Text
@@ -47,7 +48,7 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,desc
             variant="secondary"
             className="text-right mt-2"
           >
-            {owner}
+            {moment(releaseDate).format("MMM Do YY")}
           </Text>
           <Text
             as="p"
@@ -87,4 +88,4 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,desc
   );
 };
 
-export default PlaylistCard;
+export default AlbumCard;

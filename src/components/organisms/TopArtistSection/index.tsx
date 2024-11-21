@@ -1,6 +1,5 @@
 import { fetchArtistsList } from "@/actions/spotifyActions";
 import Text from "@/components/atoms/Text"
-import ArtistCard from "@/components/molecules/ArtistCard"
 import ArtistList from "@/components/molecules/ArtistsList";
 import { artists_ids } from "@/utils/artists";
 
