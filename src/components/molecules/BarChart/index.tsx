@@ -22,8 +22,11 @@ interface BarChartProps {
     labels: string[];
 }
 
-export default function BarChart({horizontal = false, label, data, labels } : BarChartProps) {
+export default function BarChart({ horizontal = false, label, data, labels }: BarChartProps) {
     const { theme } = useTheme();
+
+    const truncate = (text: string, length: number) =>
+        text.length > length ? `${text.slice(0, length)}…` : text;
 
     const dataSet = {
         labels,
@@ -36,11 +39,11 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
                 borderWidth: 1,
             },
         ],
-    }
+    };
 
     const options = useMemo(
         () => ({
-            indexAxis: horizontal ? "x" as const : "y" as const,
+            indexAxis: horizontal ? ("y" as const) : ("x" as const),
             responsive: true,
             plugins: {
                 legend: {
@@ -54,6 +57,10 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
                 x: {
                     ticks: {
                         color: theme === "dark" ? "#ffffff" : "#000000",
+                        callback: function (value: string | number, index: number) {
+                            const label = labels[index] || "";
+                            return truncate(label, 10); // Trunca el label a 10 caracteres
+                        },
                     },
                     grid: {
                         color: theme === "dark" ? "#444444" : "#cccccc",
@@ -62,6 +69,10 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
                 y: {
                     ticks: {
                         color: theme === "dark" ? "#ffffff" : "#000000",
+                        callback: function (value: string | number, index: number) {
+                            const label = labels[index] || "";
+                            return truncate(label, 10); // Trunca el label a 10 caracteres
+                        },
                     },
                     grid: {
                         color: theme === "dark" ? "#444444" : "#cccccc",
@@ -69,7 +80,7 @@ export default function BarChart({horizontal = false, label, data, labels } : Ba
                 },
             },
         }),
-        [horizontal, theme]
+        [horizontal, theme, labels]
     );
 
     return (

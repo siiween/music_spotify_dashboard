@@ -25,11 +25,11 @@ describe("SideBarArtist", () => {
 
     it("should render artist information correctly", () => {
         render(<SideBarArtist data={mockData} />);
-        expect(screen.getByText(mockData.name)).toBeInTheDocument();
+        expect(screen.getByText((content) => content.includes(mockData.name))).toBeInTheDocument();
         expect(screen.getByText(`${mockData.followers.total} monthly listeners`)).toBeInTheDocument();
         expect(screen.getByText(mockData.genres.join(", "))).toBeInTheDocument();
         expect(screen.getByText(`${mockData.popularity}`)).toBeInTheDocument();
-        const image = screen.getByAltText(mockData.name) as HTMLImageElement;
+        const image = screen.getByAltText((content) => content.includes(mockData.name)) as HTMLImageElement;
         expect(image).toBeInTheDocument();
         expect(image).toHaveAttribute("src", expect.stringMatching(/^\/_next\/image\?url=.+$/));
 

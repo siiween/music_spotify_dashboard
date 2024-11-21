@@ -9,7 +9,7 @@ describe("ArtistCard", () => {
             href: "/artists/jhayco",
         };
         render(<ArtistCard {...artistData} />);
-        const image = screen.getByAltText(artistData.name);
+        const image = screen.getByAltText((content) => content.includes(artistData.name));
         expect(image).toBeInTheDocument();
         expect(image).toHaveAttribute("src", expect.stringMatching(/^\/_next\/image\?url=.+$/));
         const title = screen.getByText(artistData.name);

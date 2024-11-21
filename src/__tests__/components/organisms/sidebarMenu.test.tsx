@@ -16,7 +16,7 @@ describe("SideBarMenu", () => {
         render(<SideBarMenu />);
         expect(screen.getByText("Music")).toBeInTheDocument();
         expect(screen.getByText("Home")).toBeInTheDocument();
-        expect(screen.getByText("Favorites")).toBeInTheDocument();
+        expect(screen.getByText("Recommendations")).toBeInTheDocument();
     });
 
     it("should highlight active link based on current path", () => {

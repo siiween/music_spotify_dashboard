@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import LinkWithIcon from "@/components/molecules/LinkWithIcon";
 import { MusicalNoteIcon } from "@heroicons/react/16/solid";
+import LinkWithIcon from "@/components/atoms/LinkWithIcon";
 
 
 jest.mock("@heroicons/react/16/solid", () => ({

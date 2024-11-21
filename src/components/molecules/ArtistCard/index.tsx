@@ -10,7 +10,7 @@ interface ArtistCardProps {
 
 const ArtistCard: React.FC<ArtistCardProps> = ({ imageUrl, name, href }) => {
   return (
-    <Link href={href} className="w-full p-3 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all rounded-lg">
+    <Link href={!name ? "" : href} className="w-full p-3 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all rounded-lg">
         <div className="relative w-full aspect-square rounded-lg overflow-hidden">
           <Image
             src={imageUrl}

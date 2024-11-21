@@ -119,3 +119,4 @@ export async function fetchRecommendations(params: RecommendationsParams) {
     seed_tracks: "0c6xIDDpzE81m2q797ordA",
   });
 }
+
