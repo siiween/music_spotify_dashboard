@@ -13,7 +13,7 @@ export default async function RecommendationsPage({
   const offset = (currentPage - 1) * limit;
 
   return (
-    <div className="p-6">
+    <div>
       <h1 className="text-2xl font-bold mb-4">New Albums</h1>
       <Suspense fallback={<NewAlbumsSkeleton number={12} />}>
         <RecommendationContent
