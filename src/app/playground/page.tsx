@@ -22,10 +22,7 @@ export default function Playground() {
       </Text>
       <Button>Button</Button>
       <Button variant="secondary" onClick={() => alert("I am a button")}>Click on me!</Button>
-
-
       {/* Link */}
-
       <Text variant="secondary" className="mt-5">
         Links
       </Text>
