@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
 
     const variantClasses = {
         primary: "bg-pink-600 text-white hover:bg-pink-700",
-        secondary: "bg-orange-600 text-white hover:bg-orange-700",
+        secondary: "bg-rose-600 text-white hover:bg-rose-700",
         outline: "border border-gray-400 text-gray-700 hover:bg-gray-100",
         transparent: "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-neutral-700",
     };
