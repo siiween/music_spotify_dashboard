@@ -24,8 +24,8 @@ export default function SideBarArtist({ data }: SideBarArtistProps) {
       aria-label="Sidebar"
       className={`${isCollapsed ? "md:w-28" : "md:w-64"} w-full transition-all relative flex flex-row  md:flex-col h-auto md:h-full sm:w-full`}
     >
-      <div className="flex flex-col">
-        <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
+      <div className="flex md:flex-col flex-row gap-3">
+        <div className="relative md:w-full md:aspect-square md:h-auto h-40 w-40 pt-auto rounded-lg overflow-hidden">
           <Image
             src={data?.images[0]?.url}
             alt={data?.name + " Artist Cover"}
@@ -35,8 +35,8 @@ export default function SideBarArtist({ data }: SideBarArtistProps) {
             priority
           />
         </div>
-
-        <Text as="h1" size={isCollapsed ? "lg" : "2xl"} variant="primary" className="font-bold text-left mt-3">
+        <div className="flex flex-col flex-1">
+        <Text as="h1" size={isCollapsed ? "lg" : "2xl"} variant="primary" className="font-bold text-left">
           {data?.name}
         </Text>
 
@@ -57,6 +57,7 @@ export default function SideBarArtist({ data }: SideBarArtistProps) {
         <Text as="p" size="sm" variant="muted" className="text-left">
           {data?.popularity}
         </Text>
+        </div>
         
       </div>
 
