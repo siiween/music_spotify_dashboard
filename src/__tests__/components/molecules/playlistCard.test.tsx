@@ -5,9 +5,9 @@ const mockPlaylist = {
     imageUrl: 'https://example.com/image.jpg',
     title: 'My Playlist Playlist Cover',
     href: '/playlist/1',
-    description: 'This is a test playlist descripstion.',
+    description: 'This is a test playlist description.',
     tracks: 10,
-    owner: 'Jose'
+    owner: 'hola'
 };
 
 describe('PlaylistCard', () => {
@@ -22,7 +22,6 @@ describe('PlaylistCard', () => {
                 owner={mockPlaylist.owner}
             />
         );
-        console.log('Titulo playlist : '+mockPlaylist.title)
         const image = screen.getByAltText((content) => content.includes(mockPlaylist.title));
         expect(image).toBeInTheDocument();
         expect(image).toHaveAttribute("src", expect.stringMatching(/^\/_next\/image\?url=.+$/));

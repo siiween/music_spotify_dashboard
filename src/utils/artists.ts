@@ -15,14 +15,12 @@ export const artists_ids = [
   "3WrFJ7ztbogyGnTHbHJFl2", // The Beatles
   "6qqNVTkY8uBg9cP3Jd7DAH", // Billie Eilish
   "6MDME20pz9RveH9rEXvrOM", // Måneskin
-  "6eZqVVKLf4eG3zRHzlx0U1", // Olivia Rodrigo
   "5cj0lLjcoR7YOSnhnX0Po5", // Doja Cat
   "0TnOYISbd1XYRBk9myaseg", // Pitbull
   "3Nrfpe0tUJi4K4DXYWgMUX", // BTS
   "1vCWHaC5f2uS3yhpwWbIA6", // Avicii
   "5WUlDfRSoLAfcVSX1WnrxN", // Sia
   "7gOdHgIoIKoe4i9Tta6qdD", // David Guetta
-  "6fWV2FFqdvLX1Wt7b56DKP", // Future
   "6sFIWsNpZYqfjUpaCgueju", // Carly Rae Jepsen
   "2NjfBq1NflQcKSeiDooVjY", // James Blake
   "0du5cEVh5yTK9QJze8zA0C", // Bruno Mars
@@ -89,7 +87,6 @@ export const artists_ids = [
   "0du5cEVh5yTK9QJze8zA0C", // Bruno Mars
   "06HL4z0CvFAxyc27GXpf02", // Taylor Swift
   "5Pwc4xIPtQLFEnJriah9YJ", // OneRepublic
-  "7dPjCyARrNRcS8Aq8qHOZP", // Shawn Mendes
   "1dfeR4HaWDbWqFHLkxsg1d", // Queen
   "7jVv8c5Fj3E9VhNjxT4snq", // Lil Nas X
   "6vWDO969PvNqNYHIOW5v0m", // Beyoncé

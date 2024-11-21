@@ -3,8 +3,6 @@ import Button from "@/components/atoms/Button";
 import LinkWithIcon from "@/components/atoms/LinkWithIcon";
 import Text from "@/components/atoms/Text";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
-import ArtistCard from "@/components/molecules/ArtistCard";
-import TrackCard from "@/components/molecules/PlaylistCard";
 import { HomeIcon } from "@heroicons/react/16/solid";
 
 export default function Playground() {

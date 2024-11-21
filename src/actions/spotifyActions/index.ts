@@ -3,6 +3,16 @@
 import spotifyAxios from "@/lib/spotifyAxios";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { AxiosError } from "axios";
+
+type Params = {
+  limit?: number;
+  offset?: number;
+  ids?: string;
+  seed_artists?: string;
+  seed_genres?: string;
+  seed_tracks?: string;
+};
 
 type PlaylistsParams = {
   limit: number;
@@ -35,11 +45,18 @@ async function getSpotifyAccessToken(): Promise<string> {
 }
 
 /**
+ * Type guard to check if an error is an Axios error.
+ */
+function isAxiosError(error: unknown): error is AxiosError {
+  return typeof error === "object" && error !== null && "isAxiosError" in error;
+}
+
+/**
  * Helper function to make Spotify API requests with axios.
  */
 async function spotifyApiRequest(
   endpoint: string,
-  params: any = {},
+  params: Params = {},
   method: "GET" | "POST" = "GET"
 ) {
   const accessToken = await getSpotifyAccessToken();
@@ -55,11 +72,19 @@ async function spotifyApiRequest(
     });
 
     return response.data;
-  } catch (error: any) {
-    console.error(`Error in Spotify API request to ${endpoint}:`, error.response?.data || error.message);
-    throw new Error(
-      error.response?.data?.error?.message || `Failed to fetch data from ${endpoint}.`
-    );
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      console.error(
+        `Error in Spotify API request to ${endpoint}:`,
+        error.response?.data || error.message
+      );
+      throw new Error(
+        error.response?.data?.error?.message || `Failed to fetch data from ${endpoint}.`
+      );
+    } else {
+      console.error(`Unexpected error: ${error}`);
+      throw new Error("An unexpected error occurred.");
+    }
   }
 }
 
@@ -119,4 +144,3 @@ export async function fetchRecommendations(params: RecommendationsParams) {
     seed_tracks: "0c6xIDDpzE81m2q797ordA",
   });
 }
-

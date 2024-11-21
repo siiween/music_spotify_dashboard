@@ -13,13 +13,13 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext", // Mantén esto en "esnext" para módulos ECMAScript
-    "moduleResolution": "node", // Cambié esto de "bundler" a "node"
+    "module": "esnext", 
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "skipDefaultLibCheck": true, // Opción útil si tienes problemas con algunas librerías
+    "skipDefaultLibCheck": true,
     "plugins": [
       {
         "name": "next"
