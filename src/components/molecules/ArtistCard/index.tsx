@@ -14,10 +14,11 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ imageUrl, name, href }) => {
         <div className="relative w-full aspect-square rounded-lg overflow-hidden">
           <Image
             src={imageUrl}
-            alt={name}
+            alt={name + " Artist Cover"}
             fill
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="180px"
             className="object-cover"
+            priority
           />
         </div>
         <div className="w-full mt-2">

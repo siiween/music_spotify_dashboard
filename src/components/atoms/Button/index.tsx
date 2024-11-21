@@ -5,6 +5,7 @@ interface ButtonProps {
     onClick?: () => void;
     disabled?: boolean;
     className?: string;
+    name?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     disabled = false,
     className = "",
+    name = "button",
 }) => {
 
 
@@ -43,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({
   `;
 
     return (
-        <button className={classes} onClick={onClick} disabled={disabled}>
+        <button className={classes} onClick={onClick} disabled={disabled} aria-label={name} name={name} title={name}>
             {children}
         </button>
     );

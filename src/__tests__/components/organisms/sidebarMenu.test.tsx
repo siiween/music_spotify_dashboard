@@ -24,14 +24,14 @@ describe("SideBarMenu", () => {
         render(<SideBarMenu />);
         const homeLink = screen.getByText("Home");
         expect(homeLink?.getAttribute("class")).toContain("text-gray-900");
-        const favoritesLink = screen.getByText("Favorites");
-        expect(favoritesLink?.getAttribute("class")).not.toContain("text-gray-900");
+        const recommendationsLink = screen.getByText("Recommendations");
+        expect(recommendationsLink?.getAttribute("class")).not.toContain("text-gray-900");
     });
-    it("should show 'Favorites' link as active when path is '/Favorites'", () => {
-        (usePathname as jest.Mock).mockReturnValue("/Favorites");
+    it("should show 'Recommendations' link as active when path is '/recommendations'", () => {
+        (usePathname as jest.Mock).mockReturnValue("/recommendations");
         render(<SideBarMenu />);
-        const favoritesLink = screen.getByText("Favorites");
-        expect(favoritesLink?.getAttribute("class")).toContain("text-gray-900");
+        const recommendationsLink = screen.getByText("Recommendations");
+        expect(recommendationsLink?.getAttribute("class")).toContain("text-gray-900");
         const homeLink = screen.getByText("Home");
         expect(homeLink?.getAttribute("class")).not.toContain("text-gray-900");
     });

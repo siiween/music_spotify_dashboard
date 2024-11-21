@@ -17,9 +17,9 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ imageUrl, title, href ,desc
         <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={imageUrl}
-            alt={title}
+            alt={title + " Playlist Cover"}
             fill
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="180px"
             className="object-cover"
           />
         </div>

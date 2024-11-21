@@ -5,11 +5,12 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { fetchPlaylists } from "@/actions/spotifyActions";
 import PlaylistCard from "../PlaylistCard";
 import Text from "@/components/atoms/Text";
+import { Playlist } from "@/types/artist";
 
 
 
 interface PlaylistListProps {
-  initialPlaylists: any[];
+  initialPlaylists: Playlist[];
   limit: number;
 }
 
@@ -35,7 +36,7 @@ export default function PlaylistList({ initialPlaylists, limit }: PlaylistListPr
   return (
     <div className="flex flex-col gap-5">
       <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-2 md:gap-3">
-        {playlists?.map((list: any, index) => (
+        {playlists?.map((list: Playlist, index) => (
           <PlaylistCard
             key={list.id + index}
             imageUrl={list?.images[0]?.url}

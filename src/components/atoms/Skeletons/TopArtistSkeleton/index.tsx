@@ -3,7 +3,7 @@ import Text from "../../Text";
 
 
 export default function TopArtistSkeleton({ number }: { number: number }) {
-    return (<section className="flex flex-col gap-5">
+    return (<section className="flex flex-col gap-5 animate-pulse">
         <Text as="h1" size="3xl" variant="primary" className="font-bold">
             Followed Artists
         </Text>
@@ -30,7 +30,7 @@ export default function TopArtistSkeleton({ number }: { number: number }) {
 
             </div>
             <div className="w-full flex flex-col items-center">
-                <Button size="md" className="w-fit" variant="outline">Loading</Button>
+                <Button name="Loading"  size="md" className="w-fit" variant="outline">Loading</Button>
             </div>
         </div>
 

@@ -18,18 +18,22 @@ export default function ThemeToggle() {
   return (
     <div className="bg-white dark:bg-gray-800 p-1 border-2 border-neutral-200 dark:border-gray-700 rounded-full flex flex-rows w-fit gap-2">
       <button
+        title="Dark mode"
+        aria-label="Dark mode"
+        name="Dark mode"
         onClick={() => setTheme("dark")}
-        className={`rounded-full p-1 ${
-          theme === "dark" ? "bg-black" : "hover:bg-neutral-300"
-        }`}
+        className={`rounded-full p-1 ${theme === "dark" ? "bg-black" : "hover:bg-neutral-300"
+          }`}
       >
         <MoonIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
       </button>
       <button
+        title="Light mode"
+        aria-label="Light mode"
+        name="Light mode"
         onClick={() => setTheme("light")}
-        className={`rounded-full p-1 ${
-          theme === "light" ? "bg-neutral-200" : "hover:bg-black"
-        }`}
+        className={`rounded-full p-1 ${theme === "light" ? "bg-neutral-200" : "hover:bg-black"
+          }`}
       >
         <SunIcon className="w-5 h-5 text-yellow-500 dark:text-yellow-300" />
       </button>

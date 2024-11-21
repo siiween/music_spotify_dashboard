@@ -10,7 +10,7 @@ export default function Home() {
         Here you can analyze Spotify artists <br/>
         and discover albums
       </Text>
-      <Button onClick={() => signIn("spotify", { callbackUrl: "/home" })}>Login with spotify</Button>
+      <Button name="Login" onClick={() => signIn("spotify", { callbackUrl: "/home" })}>Login with spotify</Button>
     </div>
   );
 }

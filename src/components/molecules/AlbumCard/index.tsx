@@ -18,10 +18,11 @@ const AlbumCard: React.FC<PlaylistCardProps> = ({ imageUrl, name, href ,releaseD
         <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={imageUrl}
-            alt={name}
+            alt={name + " Album Cover"}
             fill
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="180px"
             className="object-cover"
+            
           />
         </div>
         <div className="w-full mt-2">

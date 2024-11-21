@@ -3,31 +3,38 @@
 import Button from "@/components/atoms/Button";
 import Text from "@/components/atoms/Text";
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 import AlbumCard from "../AlbumCard";
-
+import { Album } from "@/types/artist";
+import NewAlbumsSkeleton from "@/components/atoms/Skeletons/NewAlbumsSkeleton";
 
 interface RecommendationListProps {
     page: number;
-    recommendations: any[];
+    recommendations: Album[];
+    limit: number;
 }
 
-export default function RecommendationList({ page, recommendations }: RecommendationListProps) {
+export default function RecommendationList({ page, recommendations, limit }: RecommendationListProps) {
     const router = useRouter();
+    const [isPending, startTransition] = useTransition();
 
     const nextPage = () => {
-        router.push(`/recommendations?page=${page + 1}`);
+        startTransition(() => {
+            router.push(`/recommendations?page=${page + 1}`);
+        });
     };
 
     const prevPage = () => {
         if (page > 1) {
-            router.push(`/recommendations?page=${page - 1}`);
+            startTransition(() => {
+                router.push(`/recommendations?page=${page - 1}`);
+            });
         }
     };
 
-
-    return (
+    return isPending ? <NewAlbumsSkeleton number={12} /> : (
         <div>
-            <div className="grid md:grid-cols-4 lg:grid-cols-6 grid-cols-2 md:gap-3">
+            <div className="grid md:grid-cols-4 xl:grid-cols-6 grid-cols-2 md:gap-3">
                 {recommendations.map((album) => (
                     <AlbumCard
                         key={album?.id}
@@ -36,17 +43,18 @@ export default function RecommendationList({ page, recommendations }: Recommenda
                         releaseDate={album?.release_date}
                         tracks={album?.total_tracks}
                         imageUrl={album?.images[0]?.url}
-                        href="/"
+                        href={`/artist/${album?.artists[0]?.id}`}
                     />
                 ))}
             </div>
-
-            <div className="flex justify-between mt-10">
-                <Button size="md" onClick={prevPage} disabled={page === 1}>
+            <div className="flex justify-between mt-10 items-center">
+                <Button name="Previous" size="md" onClick={prevPage} disabled={page === 1 || isPending}>
                     Previous
                 </Button>
                 <Text as="span" className="font-semibold">{`Page ${page}`}</Text>
-                <Button size="md" onClick={nextPage}>Next</Button>
+                <Button name="Next" size="md" onClick={nextPage} disabled={isPending || recommendations.length < limit}>
+                    Next
+                </Button>
             </div>
         </div>
     );

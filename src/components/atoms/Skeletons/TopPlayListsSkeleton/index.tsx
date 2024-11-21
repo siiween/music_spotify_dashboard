@@ -1,7 +1,7 @@
 import Text from "../../Text";
 
 export default function TopPlayListsSkeleton({ number }: { number: number }) {
-    return (<section className="flex flex-col gap-5">
+    return (<section className="flex flex-col gap-5 animate-pulse">
         <Text as="h1" size="3xl" variant="primary" className="font-bold">
             Top Playlists
         </Text>

@@ -28,10 +28,11 @@ export default function SideBarArtist({ data }: SideBarArtistProps) {
         <div className="relative w-full aspect-square pt-auto rounded-lg overflow-hidden">
           <Image
             src={data?.images[0]?.url}
-            alt={data?.name}
+            alt={data?.name + " Artist Cover"}
             fill
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="180px"
             className="object-cover"
+            priority
           />
         </div>
 
@@ -60,6 +61,7 @@ export default function SideBarArtist({ data }: SideBarArtistProps) {
       </div>
 
       <Button
+      name="collapse" 
         variant="transparent"
         size="xs"
         className="absolute top-1/2 -transform-y-1/2 -right-2 hidden md:block"
