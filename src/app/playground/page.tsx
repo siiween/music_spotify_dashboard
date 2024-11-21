@@ -4,7 +4,7 @@ import LinkWithIcon from "@/components/molecules/LinkWithIcon";
 import Text from "@/components/atoms/Text";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
 import ArtistCard from "@/components/molecules/ArtistCard";
-import TrackCard from "@/components/molecules/TrackCard";
+import TrackCard from "@/components/molecules/PlaylistCard";
 import { HomeIcon } from "@heroicons/react/16/solid";
 
 export default function Playground() {

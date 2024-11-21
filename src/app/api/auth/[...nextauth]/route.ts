@@ -8,14 +8,15 @@ const scopes = [
   "playlist-read-collaborative",
   "user-read-currently-playing",
   "user-modify-playback-state",
+  "user-follow-read",
+  "user-top-read"
 ].join(",");
 
 const LOGIN_URL = `https://accounts.spotify.com/authorize?scope=${encodeURIComponent(
   scopes
 )}`;
 
-const authOptions = {
-  // Configuración de los proveedores
+export const authOptions = {
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID!,
@@ -29,19 +30,14 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, account }) {
-      // Si se inicia sesión por primera vez, añade los tokens
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.accessTokenExpires = Date.now() + account.expires_in! * 1000; // Tiempo de expiración en ms
       }
-
-      // Si el token aún es válido, devuélvelo
       if (Date.now() < token.accessTokenExpires) {
         return token;
       }
-
-      // Si el token ha expirado, refrecarlo
       return await refreshAccessToken(token);
     },
     async session({ session, token }) {
@@ -53,7 +49,6 @@ const authOptions = {
   },
 };
 
-// Función para refrescar el token de acceso
 async function refreshAccessToken(token) {
   try {
     const response = await fetch("https://accounts.spotify.com/api/token", {
