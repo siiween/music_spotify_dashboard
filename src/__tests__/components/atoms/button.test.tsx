@@ -11,36 +11,41 @@ describe("Button", () => {
     it("must apply the correct classes according to the variant", () => {
         render(<Button variant="primary">Primary Button</Button>);
         const primaryButton = screen.getByText(/Primary Button/i);
-        expect(primaryButton).toHaveClass("bg-rose-600 text-white hover:bg-rose-700");
+        expect(primaryButton?.getAttribute("class")).toContain("bg-pink-600 text-white hover:bg-pink-700");
 
         render(<Button variant="secondary">Secondary Button</Button>);
         const secondaryButton = screen.getByText(/Secondary Button/i);
-        expect(secondaryButton).toHaveClass("bg-orange-600 text-white hover:bg-orange-700");
+        expect(secondaryButton?.getAttribute("class")).toContain("bg-orange-600 text-white hover:bg-orange-700");
+
 
         render(<Button variant="outline">Outline Button</Button>);
         const outlineButton = screen.getByText(/Outline Button/i);
-        expect(outlineButton).toHaveClass("border border-gray-400 text-gray-700 hover:bg-gray-100");
+        expect(outlineButton?.getAttribute("class")).toContain("border border-gray-400 text-gray-700 hover:bg-gray-100");
+
     });
 
     it("must apply the correct classes according to the size", () => {
         render(<Button size="sm">Small Button</Button>);
         const smallButton = screen.getByText(/Small Button/i);
-        expect(smallButton).toHaveClass("px-3 py-1 text-sm");
+        expect(smallButton?.getAttribute("class")).toContain("px-3 py-1 text-sm");
 
         render(<Button size="md">Medium Button</Button>);
         const mediumButton = screen.getByText(/Medium Button/i);
-        expect(mediumButton).toHaveClass("px-4 py-2 text-base");
+        expect(mediumButton?.getAttribute("class")).toContain("px-4 py-2 text-base");
+
 
         render(<Button size="lg">Large Button</Button>);
         const largeButton = screen.getByText(/Large Button/i);
-        expect(largeButton).toHaveClass("px-5 py-3 text-lg");
+        expect(largeButton?.getAttribute("class")).toContain("px-5 py-3 text-lg");
+
     });
 
     it("should have the disabled state when the `disabled` property is true", () => {
         render(<Button disabled={true}>Disabled Button</Button>);
         const disabledButton = screen.getByText(/Disabled Button/i);
         expect(disabledButton).toBeDisabled();
-        expect(disabledButton).toHaveClass("opacity-50 cursor-not-allowed");
+        expect(disabledButton?.getAttribute("class")).toContain("opacity-50 cursor-not-allowed");
+
     })
 
 

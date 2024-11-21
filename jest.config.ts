@@ -6,15 +6,33 @@ const createJestConfig = nextJest({
   dir: './',
 })
 
-// Add any custom config to be passed to Jest
 const config: Config = {
   coverageProvider: 'v8',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  preset: 'ts-jest'
-  // Add more setup options before each test is run
-  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  testEnvironment: 'jsdom', // o 'node' dependiendo de tu entorno de pruebas
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'], // Asegúrate de que se cargue el archivo setup
+  preset: 'ts-jest',
+
+  // Añadimos transformaciones específicas para módulos .ts, .tsx y .js
+
+
+  // Mapeo para tratar módulos que usen exportación ESM
+  moduleNameMapper: {
+    "^jose": require.resolve("jose"),
+    "^@panva/hkdf": require.resolve("@panva/hkdf"),
+    "^preact-render-to-string": require.resolve("preact-render-to-string"),
+    "^preact": require.resolve("preact"),
+    "^uuid": require.resolve("uuid"),
+    "^@/(.*)$": "<rootDir>/src/$1",  // O <rootDir>/app/$1 si usas app en lugar de src
+
+  },
+
+
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
+  globals: {
+    'ts-jest': {
+      useESM: true,  // Indica que queremos usar ESM en ts-jest
+    },
+  },
 }
 
-// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 export default createJestConfig(config)
