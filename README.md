@@ -77,25 +77,23 @@ La aplicación sigue el enfoque **Atomic Design**, donde los componentes están 
 **Carpetas principales**:
 
 src/  
-├── actions/ # Llamadas centralizadas a la API de Spotify y lógica asociada  
-├── app/ # Rutas principales y sus correspondientes páginas  
-│   ├── api/ # Configuración y manejo de la API (endpoints)  
-│   ├── artist/ # Página de detalle de artista  
-│   ├── home/ # Página principal (inicio)  
-│   ├── playground/ # Página de pruebas para componentes  
-│   └── recommendations/ # Página de recomendaciones de álbumes  
-├── components/ # Componentes organizados según Atomic Design  
-│   ├── atoms/ # Componentes básicos e independientes (botones, inputs, etc.)  
-│   ├── molecules/ # Conjuntos de átomos que forman elementos funcionales (formularios, tarjetas, etc.)  
-│   └── organisms/ # Conjuntos de moléculas que forman secciones completas de la UI (headers, sidebars, etc.)  
-├── context/ # Gestión del estado global y contextos (e.g., temas claro/oscuro)  
-├── hooks/ # Custom hooks reutilizables (e.g., manejo de sidebar, Infinite Scroll)  
-├── lib/ # Configuración de librerías y utilidades auxiliares  
-├── types/ # Definición de tipos TypeScript para los datos de la API de Spotify  
-├── utils/ # Funciones utilitarias generales (e.g., helpers de formato o validaciones)  
-├── middleware.ts # Configuración de middleware para manejo de rutas o autenticación  
-└── ...  
-
+|── actions/ # Llamadas centralizadas a la API de Spotify y lógica asociada  
+|── app/ # Rutas principales y sus correspondientes páginas  
+| |──api/ # Configuración y manejo de la API (endpoints)  
+| |── artist/ # Página de detalle de artista  
+| |── home/ # Página principal (inicio)  
+| |── playground/ # Página de pruebas para componentes  
+| |── recommendations/ # Página de recomendaciones de álbumes  
+|── components/ # Componentes organizados según Atomic Design  
+| |── atoms/ # Componentes básicos e independientes (botones, inputs, etc.)  
+│ |── molecules/ # Conjuntos de átomos que forman elementos funcionales (formularios, tarjetas, etc.)  
+│ |── organisms/ # Conjuntos de moléculas que forman secciones completas de la UI (headers, sidebars, etc.)  
+|── context/ # Gestión del estado global y contextos (e.g., temas claro/oscuro)  
+|── hooks/ # Custom hooks reutilizables (e.g., manejo de sidebar, Infinite Scroll)  
+|── lib/ # Configuración de librerías y utilidades auxiliares  
+|── types/ # Definición de tipos TypeScript para los datos de la API de Spotify  
+|── utils/ # Funciones utilitarias generales (e.g., helpers de formato o validaciones)  
+|── middleware.ts # Configuración de middleware para manejo de rutas o autenticación  
 
 
 ## ⚙️ Instalación y Configuración
