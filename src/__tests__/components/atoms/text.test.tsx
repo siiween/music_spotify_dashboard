@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import Text from "@/components/atoms/Text";
 
-
 describe("Text", () => {
-
   it("should render text correctly with default classes", () => {
     render(<Text>Test Text</Text>);
     const textElement = screen.getByText(/Test Text/i);
     expect(textElement).toBeInTheDocument();
-    expect(textElement).toHaveClass("font-sans text-base text-gray-900 dark:text-gray-100");
+    expect(textElement).toHaveClass(
+      "font-sans text-base text-gray-900 dark:text-gray-100"
+    );
   });
 
   it("must apply the correct classes according to the size", () => {
@@ -61,5 +61,4 @@ describe("Text", () => {
     const textWithClass = screen.getByText(/text with aditional class/i);
     expect(textWithClass).toHaveClass("text-red-500");
   });
-
 });
