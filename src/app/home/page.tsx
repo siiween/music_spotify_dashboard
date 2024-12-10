@@ -5,14 +5,14 @@ import TopPlaylistsSection from "@/components/organisms/TopPlaylistsSection";
 import { Suspense } from "react";
 
 export default function Home() {
-    return (
-        <main className="flex flex-col gap-10">
-            <Suspense fallback={<TopArtistSkeleton number={6}/>} >
-                <TopArtistSection />
-            </Suspense>
-            <Suspense fallback={<TopPlayListsSkeleton number={25} />} >
-                <TopPlaylistsSection />
-            </Suspense>
-        </main>
-    )
+  return (
+    <main className="flex flex-col gap-10">
+      <Suspense fallback={<TopArtistSkeleton number={18} />}>
+        <TopArtistSection />
+      </Suspense>
+      {/* <Suspense fallback={<TopPlayListsSkeleton number={25} />}>
+        <TopPlaylistsSection />
+      </Suspense> */}
+    </main>
+  );
 }

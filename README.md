@@ -6,6 +6,16 @@
 
 ---
 
+
+
+## Deprecated Spotify API Endpoint
+
+The Spotify API has deprecated the `/browse/featured-playlists` endpoint, which was previously used on the home page to demonstrate infinite scroll functionality. Due to this change, I was forced to comment out that section in the application. 
+
+However, the code for the infinite scroll implementation remains intact and can be revisited or adapted to other endpoints if needed.
+
+
+
 ## 🌟 Features
 
 ### 📋 Home Page (/home)
@@ -97,6 +107,8 @@ SPOTIFY_CLIENT_SECRET=your_client_secret
 NEXTAUTH_SECRET=your_secret
 NEXTAUTH_URL=http://localhost:3000
 ```
+
+You can create this keys and configure a project in [Spotify Developer](https://developer.spotify.com/)
 
 ### 3️⃣ Run the Application
 
